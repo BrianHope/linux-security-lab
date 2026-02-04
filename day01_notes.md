@@ -1,6 +1,6 @@
 What was day 1 for?
 
-Day 1 was to set up a clearn Linux lab, learn the filesystem structure, and understand why each directory matters for security.
+Day 1 was to set up a clean Linux lab, learn the filesystem structure, and understand why each directory matters for security.
 
 Why does filesystem knowldege matter for security?
 
