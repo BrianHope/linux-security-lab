@@ -4,7 +4,7 @@ Day 1 was to set up a clean Linux lab, learn the filesystem structure, and under
 
 Why does filesystem knowldege matter for security?
 
-Knowing the filesystem helps to identify where evidnece, configuration, and sensitive data live. It allows me to investigate efficiently and prevent attackers from exploiting key directories.
+Knowing the filesystem helps to identify where evidence, configuration, and sensitive data live. It allows me to investigate efficiently and prevent attackers from exploiting key directories.
 
 
 Linux Filesystem Overview:
@@ -13,7 +13,7 @@ Root -
 
 Purpose: Root of everything. Compromises here give full control over the system.
 
-/bin - Essential system binaries (ls, cp, rm). Access allows attackers to change the state of the machine and disrupt operations.
+/bin - Essential system binaries (ls, cp, rm). Access allows attackers to change and alter commands.
 
 /sbin - Administrative Binaries (ip, mount). Access allows attackers to change the state of the machine and distrupt operations.
 
