@@ -1,41 +1,56 @@
-Linux Permissions:
-
-1. File type (-, d, l)
-2. Permissions (rw-, r--, r--)
-3. Owner
-4. Group
-5. Size
-6. Date
-7. File/Dir name
-
-Permission Triad:
-1. Owner
-2. Group
-3. Other
-
-Each file and directory gets r - read, w - write, x - execute
+The goal of day 2 was to understand how Linux enforces access control through permissions and ownership, and how misconfigurations in these mechanisms directly lead to security failures sich as privilege escalltion, data exposure, and service breakage. This day builds on filesystem knowldege from day 1 and establishes the foundation for understanding why systems fila silently and how attackers gain elevated access without exploiting vulnerabilities.
 
 
-Why should logs be readable but not writeable?
+The Linux Permission Model - 
 
-Logs should be readable so that users can see what is happening on the system and they should not be writeable because they should not change or be tampered with.
+Owner - the account that owns the file
+Group - a set of users with shared access
+Other - all remaining users on the system
 
-Why should scripts be executable but not writable by everyone?
+Each entity can have - 
+r (read)
+w (write)
+x (execute)
 
-Scripts should be executable so that the user can physcially use the script to complete tasks and they should not be writable so the code is not altered.
+Reading ls -l Output - 
 
-Configurations files should be readable in order for users to be able to see how things are setup on the system but should be tightly controlled to prevent tampering.
+-rw-r--r-- 1 user group 4096 file.txt
 
-Permission Visualization Drill:
+- regular file
+- rw- owner can read and write
+- r-- group can read
+- r-- others can read
+- user - file owner
+- group - file group
+- 4096 file size
+- file.txt - file name and type
 
-ls -l /etc/passwd:
+Understanding this output is crucial for diagnosing permission errors
 
-root is the owner of this file and everyone can read but only the owner can write to it
 
-ls -l /etc/shadow:
+Symbolic and Numeric mode can both be used to modify permissions
 
-root is the owner of this file and only the owner and group can read and only the owner can write 
+Read -4
+Write - 2 
+Execute - 1
 
-ls -l /var/log:
+chmod 640 secrets.txt
 
-most of these files are owned by root and syslog and mostly only the owner and group can read and the owner can write 
+Owner - rw-
+Group - r--
+Other ---
+
+
+Ownership vs Permissions:
+
+Ownership determines who permissions apply to
+
+Attackers prefer misconfigs because they are reliable, repeatable and rarely monitored
+
+Most real world breaches succeed due to misconfiuration rather than missing patches.
+
+
+
+
+
+
